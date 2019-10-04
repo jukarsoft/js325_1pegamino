@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style>
+		@font-face {font-family: Pergamino; 
+			src:url(fonts/RegencyScriptFLF.ttf)}
+		
+		* {
+			width: 600px;
+			margin: auto;
+		}
+		div#area {
+			height: 600px;
+			z-index: 1;
+			position: relative;
+			z-index: 0;
+			border: 1px solid black;
+			background-color: black;
+		}
+		.imagen {
+			height: 600px;
+			position: absolute;
+			background-size: contain;
+			/*background-color: black;*/
+			z-index: -1;
+		}
+		#escrito {
+			position:absolute;
+			top:150px;
+			font-family: 'Pergamino', sans-serif;
+			font-size: 3em;
+			text-align: left;
+			width: 90%;
+			padding: 15px;
+			margin: 15px;
+			z-index: 2;
+		}
+	</style>
+	<script>
+		window.onload = function() {
+			//activar un listener sobre todo el documento
+			document.getElementById('texto').addEventListener('keydown', function () {onkeydownf()});
+			document.getElementById('pergamino').addEventListener('mousedown', function () {onmousedownf()});
+			//document.getElementById('texto').addEventListener('keypress', function () {onkeypressf(this)});
+		}
+		
+		function onkeydownf () {
+			var texto1 = document.getElementById('texto');
+			var area = document.getElementById('escrito');
+			escribir(area, texto1);
+		}	
+		function onmousedownf () {
+			var texto1 = document.getElementById('texto');
+			var area = document.getElementById('escrito');
+			escribir(area, texto1);
+		}
+		function escribir (area, texto)	{
+			area.innerHTML=texto.innerHTML;
+		}
+		function onkeypresf() {
+			area.innerHTML=texto.innerHTML;
+		}
+
+		
+	</script>
+</head>
+<body>
+	<textarea name="texto" id="texto" cols="300" rows="5">Ejercicio de escritura en pegamino utilizando evento tecla pulsada y innerHtml</textarea>
+	<div  id="area">
+		<img src="img/pergamino.png" id="pergamino"  class="imagen">
+		<div id="escrito"></div>
+
+	</div>
+	
+</body>
+</html>
